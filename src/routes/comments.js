@@ -1,13 +1,12 @@
+// src/routes/comments.js
+
 const express = require('express');
 const router = express.Router();
-const { getComments, postComment } = require('../controllers/commentController');
+const { getComments, createComment, updateComment, deleteComment } = require('../controllers/commentController');
 
-// Get all comments
 router.get('/', getComments);
-
-// Post a new comment
-router.post('/', postComment);
-
-// Additional routes for likes, replies, voice memos, etc.
+router.post('/', createComment);
+router.put('/:id', updateComment);
+router.delete('/:id', deleteComment);
 
 module.exports = router;
