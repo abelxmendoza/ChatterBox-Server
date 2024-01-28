@@ -4,6 +4,8 @@
 
 This project is the backend for a comment section feature that can be integrated into web applications. It currently provides APIs to create, retrieve, update, and delete comments.
 
+![1706406008361](image/README/1706406008361.png)
+
 ## Technologies Used
 
 - Node.js
