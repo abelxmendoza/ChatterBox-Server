@@ -1,5 +1,7 @@
 // src/config/passport-setup.js
 
+console.log('Setting up Passport with Google OAuth');
+
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/User'); // Adjust the path as necessary to your User model

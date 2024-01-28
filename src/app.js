@@ -1,10 +1,13 @@
 // server.js or app.js
 
 
-
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 const express = require('express');
-const connectToMongoDB = require('./config/database'); // Adjust the path based on your project structure
+const passport = require('passport');
+require('./config/passport-setup'); // This line is crucial
+const connectToMongoDB = require('./config/database');
+
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('Welcome to the Comment Section API!');
 });
+
+// Importing auth routes and using them
+const authRoutes = require('./routes/auth-routes'); // Make sure the path is correct
+app.use('/auth', authRoutes);
 
 // Importing comment routes and using them
 const commentRoutes = require('./routes/comments');
