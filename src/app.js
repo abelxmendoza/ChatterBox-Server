@@ -1,7 +1,6 @@
-
 // server.js or app.js
 
-require('dotenv').config(); // This should be at the top to load environment variables
+require('dotenv').config(); // Load environment variables
 const express = require('express');
 const connectToMongoDB = require('./config/database'); // Adjust the path based on your project structure
 
@@ -11,15 +10,18 @@ const PORT = process.env.PORT || 3000;
 // Connect to MongoDB
 connectToMongoDB();
 
-// Middlewares
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+// Middlewares for parsing JSON and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
-// Define your routes here, for example:
 app.get('/', (req, res) => {
   res.send('Welcome to the Comment Section API!');
 });
+
+// Importing comment routes and using them
+const commentRoutes = require('./routes/comments');
+app.use('/api/comments', commentRoutes);
 
 // Start the server
 app.listen(PORT, () => {
