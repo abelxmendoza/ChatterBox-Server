@@ -1,6 +1,7 @@
 // server.js or app.js
 
 
+
 require('dotenv').config(); // Load environment variables
 const express = require('express');
 const connectToMongoDB = require('./config/database'); // Adjust the path based on your project structure
